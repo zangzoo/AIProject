@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+requests
+pillow
+torch
+torchvision
+transformers # for potentially using pre-trained models or parts of them

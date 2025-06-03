@@ -1,6 +1,5 @@
 # data 폴더 전체를 무시
 data/
-인식O_손만/
 인식O_키포인트_전부/
 wandb/
 before/
