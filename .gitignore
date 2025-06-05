@@ -3,6 +3,7 @@ data/
 인식O_키포인트_전부/
 wandb/
 before/
+dataset/
 
 # 캐시, 바이너리 등 불필요한 파일들
 __pycache__/
@@ -12,3 +13,7 @@ __pycache__/
 *.npy
 *.pt
 *.json
+.DS_Store
+**/.DS_Store
+*.npz
+*.h5
