@@ -1,10 +1,9 @@
+import React, { useState, useEffect } from 'react';
+import { View, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
 import { Image } from 'expo-image';
-import { Platform, StyleSheet, TouchableOpacity, View } from 'react-native';
-import { useState, useEffect } from 'react';
-import { Link, useRouter } from 'expo-router';
+import { useRouter } from 'expo-router';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 
@@ -15,79 +14,146 @@ const splashImage2 = require('@/assets/images/start_camera.png');
 export default function HomeScreen() {
   const [showSplashScreen1, setShowSplashScreen1] = useState(true);
   const router = useRouter();
+  const insets = useSafeAreaInsets();
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowSplashScreen1(false);
     }, 2000);
-
     return () => clearTimeout(timer);
   }, []);
 
+  const { width: SCREEN_WIDTH } = Dimensions.get('window');
+
   if (showSplashScreen1) {
-    // 첫 번째 시작 화면 렌더링
     return (
-      <ThemedView style={styles.container}>
-        <ThemedText type="title" style={styles.splashText}>수어</ThemedText>
-        <ThemedText type="title" style={styles.splashText}>TALK</ThemedText>
-        <Image source={splashImage1} style={styles.splashImage} contentFit="contain" />
-      </ThemedView>
-    );
-  } else {
-    // 두 번째 시작 화면 렌더링
-    return (
-      <ThemedView style={styles.container}>
-        <ThemedText type="title" style={styles.splashText}>수어톡</ThemedText>
-        <TouchableOpacity onPress={() => router.push('/relationship-select')} style={styles.splashImage}>
-          <View style={styles.splashImage}>
-            <Image source={splashImage2} style={styles.splashImage} contentFit="contain" />
+      <SafeAreaView style={styles.safeArea}>
+        <ThemedView style={styles.container}>
+          {/* 텍스트 영역: flex 1.2 */}
+          <View style={[styles.firstTitleContainer, { flex: 2 }]}>
+            <ThemedText type="title" style={styles.firstSplashText}>
+              수어
+            </ThemedText>
+            <ThemedText type="title" style={styles.firstSplashText}>
+              TALK
+            </ThemedText>
           </View>
-        </TouchableOpacity>
-        <ThemedText style={styles.cameraText}>카메라를 들고있는 가락이를 클릭해 주세요!</ThemedText>
-      </ThemedView>
+
+          {/* 이미지 영역: flex 8.8 */}
+          <View style={[styles.firstImageContainer, { flex: 8.8 }]}>
+            <Image
+              source={splashImage1}
+              style={{
+                width: SCREEN_WIDTH * 1.2,
+                height: '100%',
+              }}
+              contentFit="contain"
+            />
+          </View>
+        </ThemedView>
+      </SafeAreaView>
     );
   }
+
+  // 두 번째 스플래시 화면
+  return (
+    <SafeAreaView style={styles.safeArea}>
+      <ThemedView style={styles.container}>
+        {/* 상단 텍스트: 화면 높이의 20% */}
+        <View style={[styles.secondTitleContainer, { flex: 2 }]}>
+          <ThemedText type="title" style={styles.secondSplashText}>
+            수어톡
+          </ThemedText>
+        </View>
+
+        {/* 중간 이미지: 화면 높이의 60% */}
+        <TouchableOpacity
+          onPress={() => router.push('/relationship-select')}
+          style={[styles.secondImageWrapper, { flex: 4 }]}
+        >
+          <Image
+            source={splashImage2}
+            style={{
+              width: SCREEN_WIDTH * 0.7,
+              height: '100%',
+            }}
+            contentFit="contain"
+          />
+        </TouchableOpacity>
+
+        {/* 하단 안내문구: 화면 높이의 20% */}
+        <View
+          style={[
+            styles.secondCaptionContainer,
+            {
+              flex: 2,
+              paddingBottom: insets.bottom + 60,
+            },
+          ]}
+        >
+          <ThemedText style={styles.cameraText}>
+            카메라를 들고있는 가락이를 클릭해 주세요!
+          </ThemedText>
+        </View>
+      </ThemedView>
+    </SafeAreaView>
+  );
 }
 
 const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+    backgroundColor: '#AEE1D4',
+  },
   container: {
     flex: 1,
+    backgroundColor: '#AEE1D4',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+
+  // 첫 번째 스플래시 스타일
+  firstTitleContainer: {
+    justifyContent: 'flex-end',   // 텍스트를 아래로 붙임
+    alignItems: 'center',
+    marginBottom:  -20,           // 이미지와 더 가까워지도록 살짝 겹치게
+  },
+  firstSplashText: {
+    fontSize: 60,
+    fontWeight: 'bold',
+    color: '#264D4D',
+    lineHeight: 40,
+    marginBottom: 15,
+  },
+  firstImageContainer: {
+    justifyContent: 'flex-start', // 이미지를 위로 붙임
+    alignItems: 'center',
+    marginTop: -90,               // 텍스트와 더 가까워지도록 위로 올림
+  },
+
+  // 두 번째 스플래시 스타일
+  secondTitleContainer: {
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#AEE1D4', // 연한 하늘색 배경
-    paddingBottom: 50, // 하단 여백 추가
   },
-  splashText: { // 시작 화면 텍스트 스타일
-    fontSize: 50,
+  secondSplashText: {
+    fontSize: 52,
     fontWeight: 'bold',
-    color: '#264D4D', // 어두운 색상
-    marginVertical: 5,
+    color: '#264D4D',
   },
-  splashImage: { // 시작 화면 이미지 스타일
-    width: '100%', // 너비 조정
-    height: '75%', // 높이 조정
-    marginVertical: 20,
-  },
-  cameraText: { // 두 번째 화면 하단 텍스트 스타일
-    fontSize: 18,
-    color: '#264D4D', // 어두운 색상
-    textAlign: 'center',
-    marginTop: 20,
-  },
-  titleContainer: {
-    flexDirection: 'row',
+  secondImageWrapper: {
+    justifyContent: 'center',
     alignItems: 'center',
-    gap: 8,
+    width: '100%',
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+  secondCaptionContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
+  cameraText: {
+    fontSize: 23,
+    color: '#264D4D',
+    textAlign: 'center',
+    lineHeight: 24,
   },
 });
