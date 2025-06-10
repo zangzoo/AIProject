@@ -75,13 +75,13 @@
 
 ### 백엔드
 ```bash
-cd backend
-python -m venv venv
-source venv/bin/activate    # Windows: .\venv\Scripts\activate
-pip install -r requirements.txt
-export OPENAI_API_KEY="sk-..."
-uvicorn main:app --reload --port 8000
-uvicorn keypoint_processor:app --reload --port 8001
+    cd backend
+    python -m venv venv
+    source venv/bin/activate    # Windows: .\venv\Scripts\activate
+    pip install -r requirements.txt
+    export OPENAI_API_KEY="sk-..."
+    uvicorn main:app --reload --port 8000
+    uvicorn keypoint_processor:app --reload --port 8001
 ```
 
 ### 프론트엔드
