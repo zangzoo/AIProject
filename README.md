@@ -71,6 +71,16 @@
 
 ---
 
+## 👥 팀원 소개
+
+| 프로필 | 이름·역할 | GitHub |
+| :----: | ---------------- | ------------------------------------ |
+| <img src="https://github.com/sujin7167.png?size=100" width="60"/> | **장수진**<br>기획 · AI 모델 개발 · UI/UX 디자인 | [@sujin7167](https://github.com/sujin7167) |
+| <img src="https://github.com/zangzoo.png?size=100" width="60"/> | **장지우**<br>기획 · AI 모델 개발 · UI/UX 디자인 · 백엔드·프론트엔드 개발 | [@zangzoo](https://github.com/zangzoo) |
+| <img src="https://github.com/jaeeew.png?size=100" width="60"/> | **황재윤**<br>기획 · AI 모델 개발 · 백엔드 개발| [@jaeeew](https://github.com/jaeeew) |
+
+---
+
 ## ▶️ 설치 & 실행
 
 ### 백엔드
@@ -93,24 +103,11 @@
 
 ---
 
-## 👥 팀원 소개
-
-| 프로필 | 이름·역할 | GitHub |
-| :----: | ---------------- | ------------------------------------ |
-| <img src="https://github.com/sujin7167.png?size=100" width="60"/> | **장수진**<br>기획 · AI 모델 개발 · UI/UX 디자인 | [@sujin7167](https://github.com/sujin7167) |
-| <img src="https://github.com/zangzoo.png?size=100" width="60"/> | **장지우**<br>기획 · AI 모델 개발 · UI/UX 디자인 · 백엔드·프론트엔드 개발 | [@zangzoo](https://github.com/zangzoo) |
-| <img src="https://github.com/jaeeew.png?size=100" width="60"/> | **황재윤**<br>기획 · AI 모델 개발 · 백엔드 개발| [@jaeeew](https://github.com/jaeeew) |
+## 📱 스크린샷
+- 추후 추가 예정
 
 ---
 
-## 📄 라이센스
+## 📄 라이선스
 
-이 프로젝트는 [MIT 라이센스](https://opensource.org/licenses/MIT) 하에 배포됩니다. 자세한 내용은 `LICENSE` 파일을 참고해주세요. (LICENSE 파일 생성 예정)
-
----
-
-## 📬 문의
-
-프로젝트에 대한 질문이나 제안이 있으시면 언제든지 GitHub 저장소의 [Issues] 탭을 통해 문의해주세요.
-
-[Issues]: https://github.com/zangzoo/AIProject/issues
+- MIT 라이선스
