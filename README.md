@@ -44,7 +44,7 @@
     -   백엔드와 웹소켓 통신을 통해 실시간으로 영상 데이터를 스트리밍하고 번역 결과를 수신합니다.
 
 -   `models/`
-    : 수어 인식 모델의 **개발 및 추론 관련 코드**가 포함된 폴더입니다. 여기에는 모델 정의, 학습 스크립트, 전처리 및 추론 로직 등이 있습니다. 실제 학습된 대용량 모델 파일(`.h5`, `.pt`)은 Git LFS를 통해 별도로 관리됩니다.
+    : 수어 인식 모델의 **개발 및 추론 관련 코드**가 포함된 폴더입니다. 여기에는 모델 정의, 학습 스크립트, 전처리 및 추론 로직 등이 있습니다. 훈련시킨 모델을 이 폴더에 저장해 실행합니다.
 
 ---
 
@@ -85,20 +85,20 @@
 
 ### 백엔드
 ```bash
-    cd backend
-    python -m venv venv
-    source venv/bin/activate    # Windows: .\venv\Scripts\activate
-    pip install -r requirements.txt
-    export OPENAI_API_KEY="sk-..."
-    uvicorn main:app --reload --port 8000
-    uvicorn keypoint_processor:app --reload --port 8001
+cd backend
+python -m venv venv
+source venv/bin/activate    # Windows: .\venv\Scripts\activate
+pip install -r requirements.txt
+export OPENAI_API_KEY="sk-..."
+uvicorn main:app --reload --port 8000
+uvicorn keypoint_processor:app --reload --port 8001
 ```
 
 ### 프론트엔드
 ```bash
-    cd frontend/SignApp
-    npm install # 또는 yarn install
-    npx expo start
+cd frontend/SignApp
+npm install # 또는 yarn install
+npx expo start
 ```
 
 ---
